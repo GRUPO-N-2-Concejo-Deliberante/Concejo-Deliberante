@@ -16,9 +16,12 @@ public class DetalleActividad {
 	
 	@OneToMany
 	@JoinColumn(name ="id_actividad")
+	Actividad actividad;
+	
+	@OneToMany
 	@JoinColumn(name="id_archivo")
 	
-	Actividad actividad;
+	
 	Archivo archivo;
 	
 	public DetalleActividad(int id, Actividad actividad, Archivo archivo) {
