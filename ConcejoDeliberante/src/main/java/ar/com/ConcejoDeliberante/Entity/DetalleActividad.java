@@ -14,11 +14,11 @@ public class DetalleActividad {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	int id;
 	
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name ="id_actividad")
 	Actividad actividad;
 	
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name="id_archivo")
 	
 	

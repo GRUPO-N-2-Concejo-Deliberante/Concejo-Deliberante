@@ -22,7 +22,7 @@ public class Actividad {
 	LocalTime horaSalida;
 	Date fecha;
 	
-	@OneToMany(mappedBy = "concejal")
+	@OneToMany(mappedBy = "actividad")
     private List<Asistencia> asistencias;
 	
 	@OneToMany(mappedBy = "actividad")

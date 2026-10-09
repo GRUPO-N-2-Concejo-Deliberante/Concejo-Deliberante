@@ -19,7 +19,7 @@ public class Archivo {
 	
 	@ManyToOne
 	@JoinColumn(name="id_tipo")
-	TipoArchivo tipo;
+	TipoArchivo tipoArchivo;
 	
 	@ManyToOne
 	@JoinColumn(name="id_comision")
@@ -27,13 +27,14 @@ public class Archivo {
 	
 	@ManyToOne
 	@JoinColumn(name = "id_concejal")
+	Concejal concejal;
 	
 	@OneToMany(mappedBy = "archivo")
     private List<DetalleActividad> detallesActividad;
 	
 	String nombre;
 	Boolean estado;
-	Concejal concejal;
+	
 	
 	
 	public Archivo() {
@@ -44,7 +45,7 @@ public class Archivo {
 	public Archivo(String nombre, TipoArchivo tipo, Boolean estado, Comision comision, Concejal concejal) {
 		super();
 		this.nombre = nombre;
-		this.tipo = tipo;
+		this.tipoArchivo = tipo;
 		this.estado = estado;
 		this.comision = comision;
 		this.concejal = concejal;
@@ -62,12 +63,12 @@ public class Archivo {
 
 
 	public TipoArchivo getTipo() {
-		return tipo;
+		return tipoArchivo;
 	}
 
 
 	public void setTipo(TipoArchivo tipo) {
-		this.tipo = tipo;
+		this.tipoArchivo = tipo;
 	}
 
 
