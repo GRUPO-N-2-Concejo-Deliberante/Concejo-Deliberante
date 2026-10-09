@@ -6,6 +6,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 @Entity
 public class Archivo {
 	
@@ -13,11 +17,24 @@ public class Archivo {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	int id_archivo;
 	
-	String nombre;
-	TipoArchivo tipo;
-	Boolean estado;
+	@ManyToOne
+	@JoinColumn(name="id_tipo")
+	TipoArchivo tipoArchivo;
+	
+	@ManyToOne
+	@JoinColumn(name="id_comision")
 	Comision comision;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_concejal")
 	Concejal concejal;
+	
+	@OneToMany(mappedBy = "archivo")
+    private List<DetalleActividad> detallesActividad;
+	
+	String nombre;
+	Boolean estado;
+	
 	
 	
 	public Archivo() {
@@ -28,7 +45,7 @@ public class Archivo {
 	public Archivo(String nombre, TipoArchivo tipo, Boolean estado, Comision comision, Concejal concejal) {
 		super();
 		this.nombre = nombre;
-		this.tipo = tipo;
+		this.tipoArchivo = tipo;
 		this.estado = estado;
 		this.comision = comision;
 		this.concejal = concejal;
@@ -46,12 +63,12 @@ public class Archivo {
 
 
 	public TipoArchivo getTipo() {
-		return tipo;
+		return tipoArchivo;
 	}
 
 
 	public void setTipo(TipoArchivo tipo) {
-		this.tipo = tipo;
+		this.tipoArchivo = tipo;
 	}
 
 
@@ -89,5 +106,27 @@ public class Archivo {
 		return ListaArchivo();
 		
 	}
+
+
+	public int getId_archivo() {
+		return id_archivo;
+	}
+
+
+	public void setId_archivo(int id_archivo) {
+		this.id_archivo = id_archivo;
+	}
+
+
+	public List<DetalleActividad> getDetallesActividad() {
+		return detallesActividad;
+	}
+
+
+	public void setDetallesActividad(List<DetalleActividad> detallesActividad) {
+		this.detallesActividad = detallesActividad;
+	}
+	
+	
 	
 }

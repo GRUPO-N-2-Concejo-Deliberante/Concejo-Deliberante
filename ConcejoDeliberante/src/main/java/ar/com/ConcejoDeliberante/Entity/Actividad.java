@@ -2,11 +2,13 @@ package ar.com.ConcejoDeliberante.Entity;
 
 import java.sql.Date;
 import java.time.LocalTime;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Actividad {
@@ -19,6 +21,12 @@ public class Actividad {
 	LocalTime horaEntrada;
 	LocalTime horaSalida;
 	Date fecha;
+	
+	@OneToMany(mappedBy = "actividad")
+    private List<Asistencia> asistencias;
+	
+	@OneToMany(mappedBy = "actividad")
+    private List<DetalleActividad> detallesActividad;
 	
 	
 	public Actividad(int id_actividad, LocalTime horaEntrada, LocalTime horaSalida, Date fecha) {
@@ -68,6 +76,28 @@ public class Actividad {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
+
+
+	public List<Asistencia> getAsistencias() {
+		return asistencias;
+	}
+
+
+	public void setAsistencias(List<Asistencia> asistencias) {
+		this.asistencias = asistencias;
+	}
+
+
+	public List<DetalleActividad> getDetallesActividad() {
+		return detallesActividad;
+	}
+
+
+	public void setDetallesActividad(List<DetalleActividad> detallesActividad) {
+		this.detallesActividad = detallesActividad;
+	}
+	
+	
 	
 	
 }
