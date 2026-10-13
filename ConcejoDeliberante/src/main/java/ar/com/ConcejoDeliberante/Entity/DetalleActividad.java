@@ -6,6 +6,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import ar.com.ConcejoDeliberante.Entity.Actividad;
+
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -14,14 +16,12 @@ public class DetalleActividad {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	int id;
 	
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name ="id_actividad")
 	Actividad actividad;
 	
-	@OneToMany
-	@JoinColumn(name="id_archivo")
-	
-	
+	@ManyToOne
+	@JoinColumn(name="id_archivo")	
 	Archivo archivo;
 	
 	public DetalleActividad(int id, Actividad actividad, Archivo archivo) {

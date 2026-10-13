@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Alta Concejal</title>
+</head>
+<body>
+    <div class="container">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/}">Active</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" th:href="@{/altaConcejal}" aria-current="page">ALTA CONCEJALES</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/TipoArchivo.html}">Alta Tipo de Archivo</a>
+            </li>
+        </ul>
+    </div>
+
+    <form th:action="@{/guardar}" th:object="${concejal}" method="post">
+        <div class="input-group container mt-4">
+            <span class="input-group-text">NOMBRE Y APELLIDO</span>
+            <input th:field="*{nombre}" type="text" aria-label="First name" class="form-control" required>
+            <input th:field="*{apellido}" type="text" aria-label="Last name" class="form-control" required>
+        </div>
+        <div class="input-group container mt-4">
+            <span class="input-group-text">DNI</span>
+            <input th:field="*{DNI}" type="text" aria-label="DNI" class="form-control" required>
+        </div>
+        <div class="input-group container mt-4">
+            <span class="input-group-text">CORREO</span>
+            <input th:field="*{correo}" type="email" aria-label="Correo" class="form-control" required>
+        </div>
+        <div class="input-group container mt-4">
+            <span class="input-group-text">TELEFONO</span>
+            <input th:field="*{telefono}" type="tel" aria-label="Telefono" class="form-control" required>
+        </div>
+        
+        <div class="container mt-3">
+           
+            <button type="submit" class="btn btn-outline-success">GUARDAR</button>
+        </div>
+    </form>
+
+    <div class="container mt-5">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">NOMBRE</th>
+                    <th scope="col">APELLIDO</th>
+                    <th scope="col">DNI</th>
+                    <th scope="col">CORREO</th>
+                    <th scope="col">TELEFONO</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+               <tr th:each="d : ${Concejales}">
+                    <th scope="row" th:text="${d.id_Usuario}"></th>
+                    <td th:text="${d.nombre}"></td>
+                    <td th:text="${d.apellido}"></td>
+                    <td th:text="${d.DNI}"></td>
+                    <td th:text="${d.correo}"></td>
+                    <td th:text="${d.telefono}"></td>
+                </tr>
+            </tbody>
+        </table> 
+    </div>
+</body>
+</html>

@@ -16,7 +16,7 @@ public class Rol {
 	int id;
 	String cargo;
 	
-	@OneToMany(mappedBy = "rol")
+	@OneToMany(mappedBy = "tipoRol")
     private List<Usuario> usuarios;
 
  public Rol(String cargo) {

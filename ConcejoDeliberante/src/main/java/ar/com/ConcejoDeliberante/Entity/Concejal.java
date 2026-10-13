@@ -12,7 +12,6 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class Concejal extends Usuario{
 	
-	
 	@OneToMany(mappedBy = "concejal")
 	private List<Archivo> archivos;
 	
@@ -24,10 +23,13 @@ public class Concejal extends Usuario{
 		
 	}
 
-	public Concejal(String nombre, String apellido, String correo, String telefono, Rol tipoRol) {
-		super(nombre, apellido, correo, telefono, tipoRol);
-		
+
+	public Concejal(int id_Usuario, String nombre, String apellido, String DNI, String correo, String telefono,
+			Rol tipoRol) {
+		super(id_Usuario, nombre, apellido, DNI, correo, telefono, tipoRol);
+		// TODO Auto-generated constructor stub
 	}
+
 
 	public List<Archivo> getArchivos() {
 		return archivos;
@@ -37,6 +39,16 @@ public class Concejal extends Usuario{
 		this.archivos = archivos;
 	}
 
+
+	public List<Asistencia> getAsistencias() {
+		return asistencias;
+	}
+
+
+	public void setAsistencias(List<Asistencia> asistencias) {
+		this.asistencias = asistencias;
+	}
+	
 	
 	
 	

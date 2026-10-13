@@ -9,26 +9,16 @@ import jakarta.persistence.Id;
 public class Secretaria extends Usuario{
 	
 	
-	
 	public Secretaria() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Secretaria(String nombre, String apellido, String correo, String telefono, Rol tipoRol) {
-		super(nombre, apellido, correo, telefono, tipoRol);
+	public Secretaria(int id_Usuario,String nombre, String apellido,String DNI, String correo, String telefono, Rol tipoRol) {
+		super( id_Usuario, nombre, apellido, correo, telefono, DNI, tipoRol);
 		// TODO Auto-generated constructor stub
 	}
 
 	
-
-	public void OrdenDia() {
-		
-	}
-	
-	
-	public void CambiarEstado() {
-		
-	}
 	
 }

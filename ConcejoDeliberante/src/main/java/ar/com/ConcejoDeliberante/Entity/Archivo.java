@@ -27,13 +27,13 @@ public class Archivo {
 	
 	@ManyToOne
 	@JoinColumn(name = "id_concejal")
-	
+	Concejal concejal;
 	@OneToMany(mappedBy = "archivo")
     private List<DetalleActividad> detallesActividad;
 	
 	String nombre;
 	Boolean estado;
-	Concejal concejal;
+	
 	
 	
 	public Archivo() {
