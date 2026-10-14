@@ -6,35 +6,37 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ar.com.ConcejoDeliberante.Entity.Concejal;
 import ar.com.ConcejoDeliberante.Entity.Usuario;
 import ar.com.ConcejoDeliberante.Service.IConcejal;
+import ar.com.ConcejoDeliberante.Service.IRol;
 
 @Controller
+
 public class ConcejalController {
 @Autowired
 IConcejal concejalServer;
+@Autowired
+IRol rolServer;
 
-@GetMapping ("/")
-public String mostrar(Model model) {
-	model.addAttribute("Concejales", concejalServer.concejales());
-	return "inicio/inicio";
-}
+
 @GetMapping ("/altaConcejal")
 public String cargaUsuario(Model model) {
 	Concejal concejal=new Concejal();
 	model.addAttribute("concejal", concejal);
-	
+	model.addAttribute("Concejales", concejalServer.concejales());
+	model.addAttribute("roles",rolServer.roles() );
 	return "Concejal/formulario";
 }
-@PostMapping ("/guardar")
+@PostMapping ("/guardarConcejal")
 public String guardar(Concejal concejal) {
 	concejalServer.guarda(concejal);
 	return "redirect:/";
 }
-@GetMapping ("/eliminarCliente/{id}")
+@GetMapping ("/eliminarConcejal/{id}")
 public String eliminar (@PathVariable int id) {
 	concejalServer.eliminarConcejal(id);
 	return "redirect:/";

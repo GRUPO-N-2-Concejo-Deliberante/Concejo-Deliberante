@@ -21,31 +21,14 @@ private IConcejalRepo conceRepo;
 
 	@Override
 	public void guarda(Concejal concejal) {
-		Boolean encontrado=true;
-		for(Concejal c:LIstaConcejal) {
-			if (c.getDNI().equalsIgnoreCase(concejal.getDNI())) {
-				c.setNombre(concejal.getNombre());
-				c.setApellido(concejal.getApellido());
-				c.setDNI(concejal.getDNI());
-				c.setCorreo(concejal.getCorreo());
-				c.setTelefono(concejal.getTelefono());
-				c.setTipoRol(concejal.getTipoRol());
-				encontrado=false;
-					
-			}
-		
-		}
-		if (encontrado==false) {
-			LIstaConcejal.add(concejal);
 		conceRepo.save(concejal);
-		}
 		
 	}
 
 	@Override
 	public List<Concejal> concejales() {
 		
-		return LIstaConcejal;
+		return conceRepo.findAll();
 	}
 
 	@Override
