@@ -14,8 +14,8 @@ public class Secretaria extends Usuario{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Secretaria(int id_Usuario,String nombre, String apellido,String DNI, String correo, String telefono, Rol tipoRol) {
-		super( id_Usuario, nombre, apellido, correo, telefono, DNI, tipoRol);
+	public Secretaria(int id,String nombre, String apellido,String DNI, String correo, String telefono, boolean estado, Rol tipoRol) {
+		super( id, nombre, apellido, correo, telefono, DNI, estado, tipoRol);
 		// TODO Auto-generated constructor stub
 	}
 

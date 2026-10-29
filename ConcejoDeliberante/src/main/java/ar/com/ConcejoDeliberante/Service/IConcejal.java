@@ -5,9 +5,15 @@ import java.util.List;
 import ar.com.ConcejoDeliberante.Entity.Concejal;
 
 public interface IConcejal {
-public void guarda(Concejal concejal);
-public List<Concejal>concejales();
-public Concejal buscar(String  DNI);
-public void eliminarConcejal(int id);
+
+	void guarda(Concejal concejal);
+
+	 List<Concejal> concejales();
+
+	Concejal porDNI(String DNI);
+
+	 void eliminarConcejal(int id);
+	 void baja(Concejal concejal);
+	 Concejal porId(int id);
 
 }

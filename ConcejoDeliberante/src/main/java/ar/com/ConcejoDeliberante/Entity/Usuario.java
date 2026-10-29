@@ -14,13 +14,14 @@ import jakarta.persistence.ManyToOne;
 public class Usuario {
 	@Id
 	@GeneratedValue (strategy = GenerationType.SEQUENCE)
-	int id_Usuario;
+	int id;
 
 	private String nombre;
 	private String apellido;
 	private String DNI;
 	private String correo;
 	private String telefono;
+	private boolean estado;
 	
 	@ManyToOne
 	@JoinColumn(name="id_rol")
@@ -32,23 +33,33 @@ public class Usuario {
 	}
 
 
-	public Usuario(int id_Usuario,String nombre, String apellido,String DNI, String correo, String telefono, Rol tipoRol) {
+	
+
+
+	public Usuario(int id, String nombre, String apellido, String DNI, String correo, String telefono,
+			boolean estado, Rol tipoRol) {
+		super();
+		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.DNI=DNI;
+		this.DNI = DNI;
 		this.correo = correo;
 		this.telefono = telefono;
+		this.estado = estado;
 		this.tipoRol = tipoRol;
 	}
 
 
-	public int getId_Usuario() {
-		return id_Usuario;
+
+
+
+	public int getId() {
+		return id;
 	}
 
 
-	public void setId_Usuario(int id_Usuario) {
-		this.id_Usuario = id_Usuario;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 
@@ -57,8 +68,8 @@ public class Usuario {
 	}
 
 
-	public void setDNI(String dNI) {
-		DNI = dNI;
+	public void setDNI(String DNI) {
+		this.DNI = DNI;
 	}
 
 
@@ -99,6 +110,17 @@ public class Usuario {
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+	
+
+
+	public boolean isEstado() {
+		return estado;
+	}
+
+
+	public void setEstado(boolean estado) {
+		this.estado = estado;
 	}
 
 
