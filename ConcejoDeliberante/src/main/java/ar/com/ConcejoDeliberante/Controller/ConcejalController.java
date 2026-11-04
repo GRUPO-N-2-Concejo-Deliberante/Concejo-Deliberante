@@ -71,6 +71,6 @@ public String mostrarEdicion(@RequestParam ("DNI") String DNI, Model model) {
 @GetMapping ("/concejal/bajaConcejal")
 public String bajaConcejal(Concejal concejal) {
 concejalServer.baja(concejal);
-return "redirect:/";
+return "redirect:/altaConcejal";
 }
 }

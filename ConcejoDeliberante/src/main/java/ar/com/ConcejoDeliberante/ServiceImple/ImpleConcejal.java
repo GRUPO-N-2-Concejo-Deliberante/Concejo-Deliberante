@@ -20,48 +20,26 @@ public class ImpleConcejal implements IConcejal {
 	@Override
 	public void guarda(Concejal concejal) {
 
-		List<Concejal> concejales = conceRepo.findAll();
-		boolean encontrado = true;;
-System.out.println("este es el concejal que apaece en implementacion"+concejal);
-		for (Concejal c : concejales) {
-			if (concejal.getDNI().equalsIgnoreCase(c.getDNI())) {
-				encontrado =false;
-				break;
-			}
-		}
-		
-		for (Concejal c : concejales) {
-			if (c.getDNI().equalsIgnoreCase(concejal.getDNI())) {
-				encontrado = true;
-				c.setNombre(concejal.getNombre());
-				c.setApellido(concejal.getApellido());
-				c.setDNI(concejal.getDNI());
-				c.setCorreo(concejal.getCorreo());
-				c.setTelefono(concejal.getTelefono());
-				c.setTipoRol(concejal.getTipoRol());
-				conceRepo.save(c);
-			}
-		}
-		if (encontrado) {
-			for (Concejal c : concejales) {
-				if (c.getDNI().equalsIgnoreCase(concejal.getDNI())) {
-					encontrado = true;
-					c.setNombre(concejal.getNombre());
-					c.setApellido(concejal.getApellido());
-					c.setDNI(concejal.getDNI());
-					c.setCorreo(concejal.getCorreo());
-					c.setTelefono(concejal.getTelefono());
-					c.setTipoRol(concejal.getTipoRol());
-					conceRepo.save(c);
-				} else {
-						concejal.setEstado(true);
-						conceRepo.save(concejal);
-						System.out.println("si se guarda al parecer el concejal");
-				}
-			}
-			
-		}
+		Concejal concejalExistente = conceRepo.findByDNI(concejal.getDNI());
+
+	    if (concejalExistente != null) {
+	        
+	        concejalExistente.setNombre(concejal.getNombre());
+	        concejalExistente.setApellido(concejal.getApellido());
+	        concejalExistente.setCorreo(concejal.getCorreo());
+	        concejalExistente.setTelefono(concejal.getTelefono());
+	        concejalExistente.setTipoRol(concejal.getTipoRol());
+	        
+	        conceRepo.save(concejalExistente);
+	       
+	    } else {
+	        
+	        concejal.setEstado(true);
+	        conceRepo.save(concejal);
+	        System.out.println("Se guardó el nuevo concejal correctamente.");
+	    }
 	}
+	
 
 	@Override
 	public List<Concejal> concejales() {
@@ -83,7 +61,7 @@ System.out.println("este es el concejal que apaece en implementacion"+concejal);
 	@Override
 	public void baja(Concejal concejal) {
 		Concejal concejalExistente=porId(concejal.getId());
-		if(concejal.isEstado()==true) {
+		if(concejalExistente.isEstado()) {
 				concejalExistente.setEstado(false);
 				conceRepo.save(concejalExistente);
 		}else {
