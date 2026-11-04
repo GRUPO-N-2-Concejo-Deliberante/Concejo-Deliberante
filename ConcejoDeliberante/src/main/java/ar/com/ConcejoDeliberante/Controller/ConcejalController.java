@@ -1,5 +1,6 @@
 package ar.com.ConcejoDeliberante.Controller;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,7 @@ public String cargaUsuario(Model model) {
 	model.addAttribute("Concejales", concejalServer.concejales());
 	model.addAttribute("roles",rolServer.roles() );
 	return "Concejal/formulario";
+
 }
 @PostMapping ("/guardarConcejal")
 public String guardar(Concejal concejal, Model model,RedirectAttributes redirect) {

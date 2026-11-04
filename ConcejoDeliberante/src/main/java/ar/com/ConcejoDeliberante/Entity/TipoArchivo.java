@@ -15,7 +15,7 @@ public class TipoArchivo {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	int id;
 	
-	@OneToMany(mappedBy = "tipo")
+	@OneToMany(mappedBy = "tipoArchivo")
 	private List<Archivo> archivos;
 	
 	String nombre;

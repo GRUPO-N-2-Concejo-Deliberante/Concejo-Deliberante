@@ -21,7 +21,8 @@ public class DetalleActividad {
 	Actividad actividad;
 	
 	@ManyToOne
-	@JoinColumn(name="id_archivo")	
+	@JoinColumn(name="id_archivo")
+
 	Archivo archivo;
 	
 	public DetalleActividad(int id, Actividad actividad, Archivo archivo) {

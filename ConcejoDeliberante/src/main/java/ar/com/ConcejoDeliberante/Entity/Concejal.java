@@ -18,16 +18,20 @@ public class Concejal extends Usuario{
 	@OneToMany(mappedBy = "concejal")
     private List<Asistencia> asistencias;
 	
+
+	
 	public Concejal() {
 		super();
 		
 	}
 
 
+
 	public Concejal(int id, String nombre, String apellido, String DNI, String correo, String telefono, boolean estado,
 			Rol tipoRol) {
 		super(id, nombre, apellido, DNI, correo, telefono, estado, tipoRol);
 		// TODO Auto-generated constructor stub
+
 	}
 
 
@@ -49,10 +53,8 @@ public class Concejal extends Usuario{
 	public void setAsistencias(List<Asistencia> asistencias) {
 		this.asistencias = asistencias;
 	}
-	
-	
-	
-	
-	
+
+
+
 	
 }
