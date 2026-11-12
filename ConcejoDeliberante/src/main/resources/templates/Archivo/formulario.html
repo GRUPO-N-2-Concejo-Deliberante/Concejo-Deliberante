@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>AltaArchivo</title>
+</head>
+<body >
+    <div class="container" >
+		<ul class="nav nav-tabs">
+		            <li class="nav-item">
+		                <a class="nav-link active" aria-current="page" th:href="@{/}">Active</a>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" th:href="@{/altaConcejal}">ALTA CONCEJALES</a>
+		            </li>
+					<li class="nav-item">
+					<a class="nav-link" th:href="@{/altaRol}" aria-current="page">ALTA ROL</a>
+					 </li>
+
+		            <li class="nav-item">
+						<a class="nav-link" th:href="@{/altaArchivo}" aria-current="page">ALTA ARCHIVO</a>
+						</li>
+		        </ul>
+    </div>
+    <div class="container">
+        <form th:action="@{/guardarArchivo}" th:object="${archivo}" method="post">
+			
+			<div class="input-group container mt-4">
+			    <span class="input-group-text " >ASUNTO / TITULO</span>
+		  <input  type="text" th:field="*{nombre}" aria-label="First name" class="form-control" required>
+			</div>
+			<div class="input-group container mt-4">
+			    <span class="input-group-text" >ARCHIVO</span>
+			    <input type="file" th:field="*{archivoFisico}"  enctype="multipart/form-data" aria-label="Last name" class="form-control" required>
+			</div>
+			<div class="input-group container mt-4">
+			    <span class="input-group-text" >HORA DE REGISTRO</span>
+				<input type="time" th:field="*{hora}" aria-label="First name" class="form-control" required>
+			</div>
+			
+			<div class="input-group container mt-4">
+						    <span class="input-group-text" >FECHA DE REGISTRO</span>
+						    <input type="date" th:field="*{fecha}" aria-label="First name" class="form-control" required>
+						</div>
+<!--			<div class="input-group container mt-4">-->
+<!--			    <span class="input-group-text" >TIPO DE ARCHIVO</span>-->
+<!--			    <select class="form-select" aria-label="SELECCIONA UN TIPO DE ARCHIVO">-->
+<!--			        <option selected>SELEECIONA EL TIPO DE ARCHIVO</option>-->
+<!--			        <option value="1">ACTA</option>-->
+<!--			        <option value="2">ORDENANZA</option>-->
+<!--			        <option value="3">PROYECTO</option>-->
+<!--			    </select>-->
+<!--			</div>-->
+<!--			<div class="input-group container mt-4">-->
+<!--			    <span class="input-group-text">CONCEJAL</span>-->
+<!--			    <select class="form-select" name="concejalId" aria-label="Seleccionar el concejal responsable" required>-->
+<!--			        <option value="">SELECCIONA UN CONCEJAL</option>-->
+<!--			        <option th:each="c : ${concejales}"-->
+<!--			                th:value="${c.id_Usuario}"-->
+<!--			                th:text="${c.nombre + ' ' + c.apellido + ' - ' + c.DNI}">-->
+<!--			        </option>-->
+<!--			    </select>-->
+<!--			</div>-->
+			
+			
+<!--			<div class="input-group container mt-4">-->
+<!--			    <span class="input-group-text">COMISION</span>-->
+<!--			    <select class="form-select" name="comisionid" aria-label="Selecciona una Comision perteneciente">-->
+<!--			        <option value="">SELECCIONA UNA COMISION</option>-->
+<!--			        <option th:each="co : ${comisiones}"-->
+<!--			                th:value="${co.id}"-->
+<!--			                th:text="${co.nombre}">-->
+<!--			        </option>-->
+<!--			    </select>-->
+<!--			</div>-->
+			
+<!--						<div >-->
+<!--							<a th:href="@{/altaComision}">Registrar Comision</a>							-->
+<!--						</div>-->
+			
+			<button type="submit" class="btn btn-outline-success">GUARDAR</button>	
+						
+		</form>
+		</div>
+    
+    <div class="container mt-5">
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">ID</th>
+                <th scope="col">ASUNTO</th>
+                <th scope="col">HORA DE REGISTRO</th>
+				<th scope="col">FECHA</th>
+                <th scope="col">ESTADO</th>
+				<th scope="col">ARCHIVO FISICO</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                
+				<tr th:each="a: ${archivos}"> 
+                
+                    <td th:text="${a.idArchivo}"></td>
+                    <td th:text="${a.nombre}"></td>
+                    <td th:text="${a.hora}"></td>
+                    <td th:text="${a.fecha}"></td>
+                    <td th:text="${a.estado}"></td>
+					<td th:text="${a.archivoFisico}"></td>
+                </tr>
+									
+				
+            </tbody>
+        </table>
+    </div>
+	</body>
+</html>

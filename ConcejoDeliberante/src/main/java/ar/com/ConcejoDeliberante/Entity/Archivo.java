@@ -15,7 +15,7 @@ public class Archivo {
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	int id_archivo;
+	int idArchivo;
 	
 	@ManyToOne
 	@JoinColumn(name="id_tipo")
@@ -33,8 +33,10 @@ public class Archivo {
     private List<DetalleActividad> detallesActividad;
 	
 	String nombre;
-	Boolean estado;
-	
+	String archivoFisico;
+	String estado;
+	String hora;
+	String fecha;
 	
 	
 	public Archivo() {
@@ -42,44 +44,73 @@ public class Archivo {
 	}
 
 
-	public Archivo(String nombre, TipoArchivo tipo, Boolean estado, Comision comision, Concejal concejal) {
+
+	
+
+
+
+	public Archivo(int idArchivo, TipoArchivo tipoArchivo, Comision comision, Concejal concejal,
+			List<DetalleActividad> detallesActividad, String nombre, String archivoFisico, String estado, String hora,
+			String fecha) {
 		super();
-		this.nombre = nombre;
-		this.tipoArchivo = tipo;
-		this.estado = estado;
+		this.idArchivo = idArchivo;
+		this.tipoArchivo = tipoArchivo;
 		this.comision = comision;
 		this.concejal = concejal;
-	}
-
-
-	public String getNombre() {
-		return nombre;
-	}
-
-
-	public void setNombre(String nombre) {
+		this.detallesActividad = detallesActividad;
 		this.nombre = nombre;
+		this.archivoFisico = archivoFisico;
+		this.estado = estado;
+		this.hora = hora;
+		this.fecha = fecha;
 	}
 
 
-	public TipoArchivo getTipo() {
+
+	public String getFecha() {
+		return fecha;
+	}
+
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+
+
+
+	public String getHora() {
+		return hora;
+	}
+
+
+
+	public void setHora(String hora) {
+		this.hora = hora;
+	}
+
+
+	public int getIdArchivo() {
+		return idArchivo;
+	}
+
+
+
+	public void setIdArchivo(int idArchivo) {
+		this.idArchivo = idArchivo;
+	}
+
+
+
+	public TipoArchivo getTipoArchivo() {
 		return tipoArchivo;
 	}
 
 
-	public void setTipo(TipoArchivo tipo) {
-		this.tipoArchivo = tipo;
+
+	public void setTipoArchivo(TipoArchivo tipoArchivo) {
+		this.tipoArchivo = tipoArchivo;
 	}
 
-
-	public Boolean getEstado() {
-		return estado;
-	}
-
-
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
-	}
 
 
 	public Comision getComision() {
@@ -87,9 +118,11 @@ public class Archivo {
 	}
 
 
+
 	public void setComision(Comision comision) {
 		this.comision = comision;
 	}
+
 
 
 	public Concejal getConcejal() {
@@ -97,25 +130,11 @@ public class Archivo {
 	}
 
 
+
 	public void setConcejal(Concejal concejal) {
 		this.concejal = concejal;
 	}
-	
-	
-	public List<Archivo> ListaArchivo (){
-		return ListaArchivo();
-		
-	}
 
-
-	public int getId_archivo() {
-		return id_archivo;
-	}
-
-
-	public void setId_archivo(int id_archivo) {
-		this.id_archivo = id_archivo;
-	}
 
 
 	public List<DetalleActividad> getDetallesActividad() {
@@ -123,10 +142,49 @@ public class Archivo {
 	}
 
 
+
 	public void setDetallesActividad(List<DetalleActividad> detallesActividad) {
 		this.detallesActividad = detallesActividad;
 	}
-	
-	
+
+
+
+	public String getNombre() {
+		return nombre;
+	}
+
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
+
+	public String getArchivoFisico() {
+		return archivoFisico;
+	}
+
+
+
+	public void setArchivoFisico(String archivoFisico) {
+		this.archivoFisico = archivoFisico;
+	}
+
+
+
+	public String getEstado() {
+		return estado;
+	}
+
+
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+
+
 	
 }
+
