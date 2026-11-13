@@ -53,16 +53,16 @@
 <!--			        <option value="3">PROYECTO</option>-->
 <!--			    </select>-->
 <!--			</div>-->
-<!--			<div class="input-group container mt-4">-->
-<!--			    <span class="input-group-text">CONCEJAL</span>-->
-<!--			    <select class="form-select" name="concejalId" aria-label="Seleccionar el concejal responsable" required>-->
-<!--			        <option value="">SELECCIONA UN CONCEJAL</option>-->
-<!--			        <option th:each="c : ${concejales}"-->
-<!--			                th:value="${c.id_Usuario}"-->
-<!--			                th:text="${c.nombre + ' ' + c.apellido + ' - ' + c.DNI}">-->
-<!--			        </option>-->
-<!--			    </select>-->
-<!--			</div>-->
+			<div class="input-group container mt-4">
+			    <span class="input-group-text">CONCEJAL</span>
+			    <select class="form-select" th:field="*{concejal}" required>
+			        <option value="">SELECCIONA UN CONCEJAL</option>
+			        <option th:each="c : ${concejales}"
+			                th:value="${c.id}"
+			                th:text="${c.nombre + ' ' + c.apellido + ' - ' + c.DNI}">
+			        </option>
+			    </select>
+			</div>
 			
 			
 <!--			<div class="input-group container mt-4">-->
@@ -90,6 +90,7 @@
             <thead>
                 <tr>
                 <th scope="col">ID</th>
+				<th scope="col">CONCEJAL</th>
                 <th scope="col">ASUNTO</th>
                 <th scope="col">HORA DE REGISTRO</th>
 				<th scope="col">FECHA</th>
@@ -102,6 +103,7 @@
 				<tr th:each="a: ${archivos}"> 
                 
                     <td th:text="${a.idArchivo}"></td>
+				    <td th:text="${a.concejal.nombre}"></td>
                     <td th:text="${a.nombre}"></td>
                     <td th:text="${a.hora}"></td>
                     <td th:text="${a.fecha}"></td>

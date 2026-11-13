@@ -44,11 +44,6 @@ public class Archivo {
 	}
 
 
-
-	
-
-
-
 	public Archivo(int idArchivo, TipoArchivo tipoArchivo, Comision comision, Concejal concejal,
 			List<DetalleActividad> detallesActividad, String nombre, String archivoFisico, String estado, String hora,
 			String fecha) {
