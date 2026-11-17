@@ -9,19 +9,22 @@
 <body >
     <div class="container" >
 		<ul class="nav nav-tabs">
-		            <li class="nav-item">
-		                <a class="nav-link active" aria-current="page" th:href="@{/}">Active</a>
-		            </li>
-		            <li class="nav-item">
-		                <a class="nav-link" th:href="@{/altaConcejal}">ALTA CONCEJALES</a>
-		            </li>
-					<li class="nav-item">
-					<a class="nav-link" th:href="@{/altaRol}" aria-current="page">ALTA ROL</a>
-					 </li>
+			<li class="nav-item">
+			    <a class="nav-link active" aria-current="page" th:href="@{/}">Active</a>
+			</li>
+			<li class="nav-item">
+			    <a class="nav-link" th:href="@{/altaConcejal}">ALTA CONCEJALES</a>
+			</li>
+			<li class="nav-item">
+			<a class="nav-link" th:href="@{/altaRol}" aria-current="page">ALTA ROL</a>
+			 </li>
+			 <li class="nav-item">
+			 <a class="nav-link" th:href="@{/altaArchivo}" aria-current="page">ALTA ARCHIVO</a>
+			  </li>
 
-		            <li class="nav-item">
-						<a class="nav-link" th:href="@{/altaArchivo}" aria-current="page">ALTA ARCHIVO</a>
-						</li>
+			  <li class="nav-item">
+			  <a class="nav-link" th:href="@{/altaTipoA}" aria-current="page">ALTA TIPO DE ARCHIVO</a>
+			   </li>
 		        </ul>
     </div>
     <div class="container">
@@ -44,15 +47,16 @@
 						    <span class="input-group-text" >FECHA DE REGISTRO</span>
 						    <input type="date" th:field="*{fecha}" aria-label="First name" class="form-control" required>
 						</div>
-<!--			<div class="input-group container mt-4">-->
-<!--			    <span class="input-group-text" >TIPO DE ARCHIVO</span>-->
-<!--			    <select class="form-select" aria-label="SELECCIONA UN TIPO DE ARCHIVO">-->
-<!--			        <option selected>SELEECIONA EL TIPO DE ARCHIVO</option>-->
-<!--			        <option value="1">ACTA</option>-->
-<!--			        <option value="2">ORDENANZA</option>-->
-<!--			        <option value="3">PROYECTO</option>-->
-<!--			    </select>-->
-<!--			</div>-->
+						<div class="input-group container mt-4">
+						    <span class="input-group-text">TIPO DE ARCHIVO</span>
+						    <select class="form-select" th:field="*{tipoArchivo}">
+						        <option value="">SELECCIONA EL TIPO DE ARCHIVO</option>
+						        <option th:each="t : ${tiposdeArchivos}"
+						                th:value="${t.id}"
+						                th:text="${t.nombre}">
+						        </option>
+						    </select>
+						</div>
 			<div class="input-group container mt-4">
 			    <span class="input-group-text">CONCEJAL</span>
 			    <select class="form-select" th:field="*{concejal}" required>
@@ -81,8 +85,15 @@
 <!--						</div>-->
 			
 			<button type="submit" class="btn btn-outline-success">GUARDAR</button>	
-						
+					
+			<div th:if="${SuccessMessage}" class="alert alert-success m-3">
+			    <p th:text="${SuccessMessage}"></p>
+			</div>
+			<div th:if="${WrongMessage}" class="alert alert-danger m-3">
+			    <p th:text="${WrongMessage}"></p>
+			</div>	
 		</form>
+		
 		</div>
     
     <div class="container mt-5">

@@ -7,5 +7,4 @@ import ar.com.ConcejoDeliberante.Entity.Rol;
 
 @Repository
 public interface IRolRepo extends JpaRepository<Rol, Integer> {
-
 }

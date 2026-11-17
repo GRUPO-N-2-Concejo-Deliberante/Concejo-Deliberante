@@ -9,19 +9,22 @@
 <body>
     <div class="container">
         <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/}">Active</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" th:href="@{/altaConcejal}" aria-current="page">ALTA CONCEJALES</a>
-            </li>
 			<li class="nav-item">
-			     <a class="nav-link active" th:href="@{/altaRol}" aria-current="page">ALTA ROL</a>
+			    <a class="nav-link active" aria-current="page" th:href="@{/}">Active</a>
+			</li>
+			<li class="nav-item">
+			    <a class="nav-link" th:href="@{/altaConcejal}">ALTA CONCEJALES</a>
+			</li>
+			<li class="nav-item">
+			<a class="nav-link" th:href="@{/altaRol}" aria-current="page">ALTA ROL</a>
 			 </li>
-            
-            <li class="nav-item">
-             
-            </li>
+			 <li class="nav-item">
+			 <a class="nav-link" th:href="@{/altaArchivo}" aria-current="page">ALTA ARCHIVO</a>
+			  </li>
+
+			  <li class="nav-item">
+			  <a class="nav-link" th:href="@{/altaTipoA}" aria-current="page">ALTA TIPO DE ARCHIVO</a>
+			   </li>
         </ul>
     </div>
 
@@ -34,3 +37,7 @@
 		<div class="container mt-3">
 		  <button type="submit" class="btn btn-outline-success">GUARDAR</button>
 		  </div>
+    </form>
+</body>
+</html>
+		 

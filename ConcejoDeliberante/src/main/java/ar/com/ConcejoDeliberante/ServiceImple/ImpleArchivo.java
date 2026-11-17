@@ -21,7 +21,6 @@ public class ImpleArchivo implements IArchivo{
 	
 	@Override
 	public void guardar (Archivo archivo) {
-		
 		archivo.setEstado("Pendiente");
 		
 		archivoRepo.save(archivo);
