@@ -19,10 +19,30 @@ public class TipoArchivo {
 	private List<Archivo> archivos;
 	
 	String nombre;
-
+	
+	public TipoArchivo() {
+		super();
+	}
+	
 	public TipoArchivo(String nombre) {
 		super();
 		this.nombre = nombre;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public List<Archivo> getArchivos() {
+		return archivos;
+	}
+
+	public void setArchivos(List<Archivo> archivos) {
+		this.archivos = archivos;
 	}
 
 	public String getNombre() {

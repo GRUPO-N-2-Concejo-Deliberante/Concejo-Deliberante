@@ -11,7 +11,9 @@ import org.springframework.web.multipart.MultipartFile;
 import ar.com.ConcejoDeliberante.Entity.Archivo;
 import ar.com.ConcejoDeliberante.Entity.Concejal;
 import ar.com.ConcejoDeliberante.Service.IArchivo;
+import ar.com.ConcejoDeliberante.Service.IComision;
 import ar.com.ConcejoDeliberante.Service.IConcejal;
+import ar.com.ConcejoDeliberante.Service.ITipoArchivo;
 import ar.com.ConcejoDeliberante.ServiceImple.ImpleArchivo;
 
 @Controller
@@ -23,6 +25,12 @@ public class ArchivoController {
     @Autowired
     IConcejal concejalesservice;
     
+    @Autowired
+    ITipoArchivo tiposService;
+    
+    @Autowired
+    IComision comisionService;
+    
     @GetMapping("/altaArchivo")
     public String mostrarFormulario(Model model, MultipartFile file)  {
     	
@@ -30,6 +38,8 @@ public class ArchivoController {
         model.addAttribute("archivo", archivo);
         model.addAttribute("concejales", concejalesservice.concejales());
         model.addAttribute("archivos", archivoService.listar());
+        model.addAttribute("tipos", tiposService.archivos());
+        model.addAttribute("comisiones", comisionService.comisiones());
         
         return "Archivo/formulario"; 
     }

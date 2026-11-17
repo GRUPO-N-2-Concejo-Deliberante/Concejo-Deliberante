@@ -8,24 +8,10 @@
     <title>Alta Concejal</title>
 </head>
 <body>
-    <div class="container">
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/}">Active</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" th:href="@{/altaConcejal}" aria-current="page">ALTA CONCEJALES</a>
-            </li>
-			<li class="nav-item">
-			<a class="nav-link active" th:href="@{/altaRol}" aria-current="page">ALTA ROL</a>
-			 </li>
-
-            
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/TipoArchivo.html}">Alta Tipo de Archivo</a>
-            </li>
-        </ul>
-    </div>
+	<div class="container" th:replace="~{inicio/inicio :: inicio}">
+    
+	</div>
+	
     <form th:action="@{/guardarConcejal}" th:object="${concejal}" method="post">
         <div class="input-group container mt-4">
             <span class="input-group-text">NOMBRE Y APELLIDO</span>

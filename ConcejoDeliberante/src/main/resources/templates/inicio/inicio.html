@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
+    <div th:fragment="inicio" class="container">
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" th:href="@{/}">Active</a>
@@ -21,7 +21,12 @@
 			 <li class="nav-item">
 			 <a class="nav-link" th:href="@{/altaArchivo}" aria-current="page">ALTA ARCHIVO</a>
 			  </li>
-            
+            <li>
+				<a class="nav-link" th:href="@{/altaTipo}" aria-current="page">ALTA TIPO ARCHIVO</a>
+			</li>
+			<li>
+				<a class="nav-link" th:href="@{/altaComision}" aria-current="page">ALTA COMISION</a>
+			</li>
         </ul>
     </div>
     <div class="container">
