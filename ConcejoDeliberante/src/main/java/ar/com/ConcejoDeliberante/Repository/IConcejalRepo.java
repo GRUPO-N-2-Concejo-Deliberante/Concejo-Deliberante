@@ -1,6 +1,7 @@
 package ar.com.ConcejoDeliberante.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -12,4 +13,5 @@ public interface IConcejalRepo extends JpaRepository<Concejal, Integer> {
 
 Concejal findByDNI (String DNI);
 Concejal findByid(int  id);
+
 }

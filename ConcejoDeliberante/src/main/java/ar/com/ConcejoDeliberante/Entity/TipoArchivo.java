@@ -19,7 +19,6 @@ public class TipoArchivo {
 	private List<Archivo> archivos;
 	
 	String nombre;
-
 	
 	public TipoArchivo() {
 		super();

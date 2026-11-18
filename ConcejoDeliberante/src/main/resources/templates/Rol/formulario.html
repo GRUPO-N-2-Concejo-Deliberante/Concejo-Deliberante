@@ -7,26 +7,10 @@
     <title>Alta Rol</title>
 </head>
 <body>
-    <div class="container">
-        <ul class="nav nav-tabs">
-			<li class="nav-item">
-			    <a class="nav-link active" aria-current="page" th:href="@{/}">Active</a>
-			</li>
-			<li class="nav-item">
-			    <a class="nav-link" th:href="@{/altaConcejal}">ALTA CONCEJALES</a>
-			</li>
-			<li class="nav-item">
-			<a class="nav-link" th:href="@{/altaRol}" aria-current="page">ALTA ROL</a>
-			 </li>
-			 <li class="nav-item">
-			 <a class="nav-link" th:href="@{/altaArchivo}" aria-current="page">ALTA ARCHIVO</a>
-			  </li>
-
-			  <li class="nav-item">
-			  <a class="nav-link" th:href="@{/altaTipoA}" aria-current="page">ALTA TIPO DE ARCHIVO</a>
-			   </li>
-        </ul>
-    </div>
+	
+	<div class="container" th:replace="~{inicio/inicio :: inicio}">
+	    </div>
+>>>>>>> 70dbe08d1382e2db30f863b8a027183a90cbdda1
 
     <form th:action="@{/guardar}" th:object="${Rol}" method="post">
         <div class="input-group container mt-4">
@@ -38,6 +22,22 @@
 		  <button type="submit" class="btn btn-outline-success">GUARDAR</button>
 		  </div>
     </form>
+	<div class="container mt-5">
+		        <table class="table">
+		            <thead>
+		                <tr>
+		                    <th scope="col">ID</th>
+		                    <th scope="col">NOMBRE</th>
+		                </tr>
+		            </thead>
+		            <tbody class="table-group-divider">
+		               <tr th:each="t : ${roles}">
+		                    <td th:text="${t.id}"></td>
+		                    <td th:text="${t.cargo}"></td>
+		            </tbody>
+					
+		        </table> 
+		    </div>
 </body>
 </html>
-		 
+

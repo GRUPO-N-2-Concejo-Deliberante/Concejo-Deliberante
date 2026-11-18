@@ -9,22 +9,21 @@ import ar.com.ConcejoDeliberante.Entity.TipoArchivo;
 import ar.com.ConcejoDeliberante.Repository.ITipoArchivoRepo;
 import ar.com.ConcejoDeliberante.Service.ITipoArchivo;
 
-
-
 @Service
 public class ImpleTipoArchivo implements ITipoArchivo{
+
 	@Autowired
-	private ITipoArchivoRepo tipoArchivoRepo;
+	private ITipoArchivoRepo tipoRepo;
+	
 	@Override
-	public void guardar(TipoArchivo tipoArchivo) {
+	public void guarda(TipoArchivo tipo) {
 		
-		tipoArchivoRepo.save(tipoArchivo);
+		tipoRepo.save(tipo);
 	}
 
 	@Override
-	public List<TipoArchivo> tiposArchivos() {
+	public List<TipoArchivo> archivos() {
 		
-		return tipoArchivoRepo.findAll();
+		return tipoRepo.findAll();
 	}
-
 }

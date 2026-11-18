@@ -21,11 +21,39 @@ public class Comision {
 	
 	String nombre;
 	
+	 public Comision() {
+		super();
+	}
+
 	 public Comision(String nombre) {
 		super();
 		this.nombre = nombre;
 	 }
-	
+
+	 public int getId() {
+		return id;
+	}
+
+
+
+	 public void setId(int id) {
+		 this.id = id;
+	 }
+
+
+
+	 public List<Archivo> getArchivos() {
+		 return archivos;
+	 }
+
+
+
+	 public void setArchivos(List<Archivo> archivos) {
+		 this.archivos = archivos;
+	 }
+
+
+
 	 public String getNombre() {
 		return nombre;
 	 }

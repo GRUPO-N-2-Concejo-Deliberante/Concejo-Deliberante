@@ -10,8 +10,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ar.com.ConcejoDeliberante.Entity.Archivo;
 import ar.com.ConcejoDeliberante.Service.IArchivo;
+import ar.com.ConcejoDeliberante.Service.IComision;
 import ar.com.ConcejoDeliberante.Service.IConcejal;
 import ar.com.ConcejoDeliberante.Service.ITipoArchivo;
+import ar.com.ConcejoDeliberante.ServiceImple.ImpleArchivo;
+
 
 @Controller
 public class ArchivoController {
@@ -22,9 +25,13 @@ public class ArchivoController {
     @Autowired
     IConcejal concejalesservice;
 
+    
     @Autowired
-    ITipoArchivo tipos;
-
+    ITipoArchivo tiposService;
+    
+    @Autowired
+    IComision comisionService;
+    
     @GetMapping("/altaArchivo")
     public String mostrarFormulario(Model model, MultipartFile file) {
 
@@ -32,18 +39,20 @@ public class ArchivoController {
         model.addAttribute("archivo", archivo);
         model.addAttribute("concejales", concejalesservice.concejales());
         model.addAttribute("archivos", archivoService.listar());
-        model.addAttribute("tiposdeArchivos", tipos.tiposArchivos());
+        model.addAttribute("tipos", tiposService.archivos());
+        model.addAttribute("comisiones", comisionService.comisiones());
+        
+        return "Archivo/formulario"; 
 
-        return "Archivo/formulario";
     }
 
     @PostMapping("/guardarArchivo")
     public String guardarArchivos(Archivo archivo, RedirectAttributes redirect) {
         try {
             archivoService.guardar(archivo);
-            redirect.addFlashAttribute("SuccessMessage", "El Archiviño fue guardadiño correctamente iño");
-        } catch (Exception e) {
-            redirect.addFlashAttribute("WrongMessage", "El archiviño no fue guardadiño correctamente iño" + e.getMessage());
+            redirect.addFlashAttribute("SuccessMessage", "El Archivo fue guardado correctamente");
+        } catch (Exception indorr) {
+            redirect.addFlashAttribute("WrongMessage", "El archivo no fue guardado correctamente" + indorr.getMessage());
         }
         return "redirect:/altaArchivo";
     }
