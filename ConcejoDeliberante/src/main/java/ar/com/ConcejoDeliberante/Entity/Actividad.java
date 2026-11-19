@@ -29,6 +29,12 @@ public class Actividad {
     private List<DetalleActividad> detallesActividad;
 	
 	
+	
+	
+	public Actividad() {
+	}
+
+
 	public Actividad(int id_actividad, LocalTime horaEntrada, LocalTime horaSalida, Date fecha) {
 		super();
 		this.id_actividad = id_actividad;
