@@ -43,6 +43,7 @@
 					<th scope="col">FECHA</th>
 					<th scope="col">HORA INICIO</th>
 					<th scope="col">HORA FIN</th>
+					<th scope="col">ESTADO</th>
 					<th scope="col">ACCIONES</th>
 				</tr>
 			</thead>
@@ -52,6 +53,7 @@
 					<td th:text="${a.fecha}"></td>
 					<td th:text="${a.horaEntrada}"></td>
 					<td th:text="${a.horaSalida}"></td>
+					<td th:text="${a.estado}"></td>
 					<td>
 						<a th:href="@{/modificarActividad(id=${a.id})}" class="btn btn-danger">modificar</a>
 					</td>

@@ -25,8 +25,10 @@ public class ImpleActividad implements IActivivdad {
 			actividadExistente.setFecha(Act.getFecha());
 			actividadExistente.setHoraEntrada(Act.getHoraEntrada());
 			actividadExistente.setHoraSalida(Act.getHoraSalida());
+			actividadExistente.setEstado("Pospuesta");
 			ActividadRepo.save(actividadExistente);
 		}else {
+			Act.setEstado("A realizar");
 			ActividadRepo.save(Act);
 		}
 	}

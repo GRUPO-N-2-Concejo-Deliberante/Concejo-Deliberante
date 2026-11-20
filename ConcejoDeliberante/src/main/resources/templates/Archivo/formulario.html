@@ -12,7 +12,7 @@
 
 
 	<div class="container">
-		<form th:action="@{/guardarArchivo}" th:object="${archivo}" method="post">
+		<form th:action="@{/guardarArchivo}" th:object="${archivo}" method="post" >
 
 			<div class="input-group container mt-4">
 				<span class="input-group-text ">ASUNTO / TITULO</span>
@@ -76,7 +76,7 @@
 	<div class="container mt-5">
 		<table class="table">
 			<thead>
-				<tr>
+				<tr style="text-align: center;">
 					<th scope="col">ID</th>
 					<th scope="col">CONCEJAL</th>
 					<th scope="col">ASUNTO</th>
@@ -90,7 +90,7 @@
 			</thead>
 			<tbody class="table-group-divider">
 
-				<tr th:each="a: ${archivos}">
+				<tr th:each="a: ${archivos}" style="text-align: center;">
 
 					<td th:text="${a.idArchivo}"></td>
 					<td th:text="${a.concejal.nombre}"></td>
@@ -108,5 +108,4 @@
 		</table>
 	</div>
 </body>
-
 </html>

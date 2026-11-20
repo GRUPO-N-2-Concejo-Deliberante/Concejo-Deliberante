@@ -23,6 +23,7 @@ public class Actividad {
 	LocalTime horaEntrada;
 	LocalTime horaSalida;
 	Date fecha;
+	String estado;
 	
 	@OneToMany(mappedBy = "actividad")
     private List<Asistencia> asistencias;
@@ -37,13 +38,21 @@ public class Actividad {
 	}
 
 
-	public Actividad(int id, LocalTime horaEntrada, LocalTime horaSalida, Date fecha) {
+
+
+	public Actividad(int id, LocalTime horaEntrada, LocalTime horaSalida, Date fecha, String estado,
+			List<Asistencia> asistencias, List<DetalleActividad> detallesActividad) {
 		super();
 		this.id = id;
 		this.horaEntrada = horaEntrada;
 		this.horaSalida = horaSalida;
 		this.fecha = fecha;
+		this.estado = estado;
+		this.asistencias = asistencias;
+		this.detallesActividad = detallesActividad;
 	}
+
+
 
 
 	public int getId() {
@@ -51,9 +60,13 @@ public class Actividad {
 	}
 
 
+
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
+
 
 
 	public LocalTime getHoraEntrada() {
@@ -61,9 +74,13 @@ public class Actividad {
 	}
 
 
+
+
 	public void setHoraEntrada(LocalTime horaEntrada) {
 		this.horaEntrada = horaEntrada;
 	}
+
+
 
 
 	public LocalTime getHoraSalida() {
@@ -71,9 +88,13 @@ public class Actividad {
 	}
 
 
+
+
 	public void setHoraSalida(LocalTime horaSalida) {
 		this.horaSalida = horaSalida;
 	}
+
+
 
 
 	public Date getFecha() {
@@ -81,9 +102,27 @@ public class Actividad {
 	}
 
 
+
+
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
+
+
+
+
+	public String getEstado() {
+		return estado;
+	}
+
+
+
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+
 
 
 	public List<Asistencia> getAsistencias() {
@@ -91,9 +130,13 @@ public class Actividad {
 	}
 
 
+
+
 	public void setAsistencias(List<Asistencia> asistencias) {
 		this.asistencias = asistencias;
 	}
+
+
 
 
 	public List<DetalleActividad> getDetallesActividad() {
@@ -101,10 +144,12 @@ public class Actividad {
 	}
 
 
+
+
 	public void setDetallesActividad(List<DetalleActividad> detallesActividad) {
 		this.detallesActividad = detallesActividad;
 	}
-	
+
 	
 	
 	
