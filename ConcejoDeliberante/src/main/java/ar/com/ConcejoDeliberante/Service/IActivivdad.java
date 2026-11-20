@@ -1,3 +1,4 @@
+
 package ar.com.ConcejoDeliberante.Service;
 
 import java.util.List;
@@ -8,5 +9,6 @@ public interface IActivivdad {
 
 	void guardarAct(Actividad Act);
 	List<Actividad> listarActividadad();
+	Actividad porID(int id);
 	
 }

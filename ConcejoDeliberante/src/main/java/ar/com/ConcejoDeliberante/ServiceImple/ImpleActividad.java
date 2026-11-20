@@ -1,6 +1,6 @@
 package ar.com.ConcejoDeliberante.ServiceImple;
 
-import ar.com.ConcejoDeliberante.Repository.IArchivoRepo;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,22 +13,34 @@ import ar.com.ConcejoDeliberante.Service.IActivivdad;
 @Service
 public class ImpleActividad implements IActivivdad {
 
-	@Autowired 
+	@Autowired
 	private RepoActividad ActividadRepo;
-	
-	
+
 	@Override
 	public void guardarAct(Actividad Act) {
+
+		Actividad actividadExistente = ActividadRepo.findById(Act.getId());
 		
-	ActividadRepo.save(Act);
-		
-		
+		if (actividadExistente != null) {
+			actividadExistente.setFecha(Act.getFecha());
+			actividadExistente.setHoraEntrada(Act.getHoraEntrada());
+			actividadExistente.setHoraSalida(Act.getHoraSalida());
+			ActividadRepo.save(actividadExistente);
+		}else {
+			ActividadRepo.save(Act);
+		}
 	}
 
 	@Override
 	public List<Actividad> listarActividadad() {
-	
+
 		return ActividadRepo.findAll();
+	}
+
+	@Override
+	public Actividad porID(int id) {
+
+		return ActividadRepo.findById(id);
 	}
 
 }

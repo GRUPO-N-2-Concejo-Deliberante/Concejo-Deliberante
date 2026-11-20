@@ -1,41 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <title>Alta Rol</title>
-</head>
-<body>
-    <div class="container" th:replace="~{inicio/inicio :: inicio}">
-    </div>
 
-    <form th:action="@{/guardarComision}" th:object="${comision}" method="post">
-        <div class="input-group container mt-4">
-            <span class="input-group-text">NOMBRE DE LA COMISION</span>
-            <input  type="text" th:field="*{nombre}" aria-label="First name" class="form-control" required>
-           
-        </div>
+<head th:replace="~{inicio/inicio :: head}">
+
+</head>
+
+<body>
+	<div class="container" th:replace="~{inicio/inicio :: inicio}">
+	</div>
+
+	<form th:action="@{/guardarComision}" th:object="${comision}" method="post">
+		<div class="input-group container mt-4">
+			<span class="input-group-text">NOMBRE DE LA COMISION</span>
+			<input type="text" th:field="*{nombre}" aria-label="First name" class="form-control" required>
+
+		</div>
 		<div class="container mt-3">
-		  <button type="submit" class="btn btn-outline-success">GUARDAR</button>
-		  </div>
-    </form>
+			<button type="submit" class="btn-outline theme-success">GUARDAR</button>
+		</div>
+	</form>
 	<div class="container mt-5">
-	        <table class="table">
-	            <thead>
-	                <tr>
-	                    <th scope="col">ID</th>
-	                    <th scope="col">NOMBRE</th>
-	                </tr>
-	            </thead>
-	            <tbody class="table-group-divider">
-	               <tr th:each="t : ${comisiones}">
-	                    <td th:text="${t.id}"></td>
-	                    <td th:text="${t.nombre}"></td>
-	            </tbody>
-				
-	        </table> 
-	    </div>
-	
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">NOMBRE</th>
+				</tr>
+			</thead>
+			<tbody class="table-group-divider">
+				<tr th:each="t : ${comisiones}">
+					<td th:text="${t.id}"></td>
+					<td th:text="${t.nombre}"></td>
+			</tbody>
+
+		</table>
+	</div>
+
 </body>
+
 </html>

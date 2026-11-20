@@ -20,12 +20,13 @@ public class ImpleConcejal implements IConcejal {
 	@Override
 	public void guarda(Concejal concejal) {
 
-		Concejal concejalExistente = conceRepo.findByDNI(concejal.getDNI());
+		Concejal concejalExistente = conceRepo.findByid(concejal.getId());
 
 	    if (concejalExistente != null) {
 	        
 	        concejalExistente.setNombre(concejal.getNombre());
 	        concejalExistente.setApellido(concejal.getApellido());
+	        concejalExistente.setDNI(concejal.getDNI());
 	        concejalExistente.setCorreo(concejal.getCorreo());
 	        concejalExistente.setTelefono(concejal.getTelefono());
 	        concejalExistente.setTipoRol(concejal.getTipoRol());

@@ -63,8 +63,8 @@ public String resultadoBusqueda( @RequestParam ("DNI") String DNI, Model model) 
 	return "redirect:/";
 }
 @GetMapping ("/modificar")
-public String mostrarEdicion(@RequestParam ("DNI") String DNI, Model model) {
-	Concejal concejal=concejalServer.porDNI(DNI);
+public String mostrarEdicion(@RequestParam ("id") int id, Model model) {
+	Concejal concejal=concejalServer.porId(id);
 	model.addAttribute("concejal", concejal);
 	model.addAttribute("Concejales", concejalServer.concejales());
 	model.addAttribute("roles",rolServer.roles() );

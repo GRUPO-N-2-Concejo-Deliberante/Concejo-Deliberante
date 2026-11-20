@@ -1,7 +1,9 @@
 package ar.com.ConcejoDeliberante.Entity;
 
+
 import java.sql.Date;
 import java.time.LocalTime;
+
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -15,7 +17,7 @@ public class Actividad {
 
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	 int id_actividad;
+	 int id;
 	
 	
 	LocalTime horaEntrada;
@@ -35,22 +37,22 @@ public class Actividad {
 	}
 
 
-	public Actividad(int id_actividad, LocalTime horaEntrada, LocalTime horaSalida, Date fecha) {
+	public Actividad(int id, LocalTime horaEntrada, LocalTime horaSalida, Date fecha) {
 		super();
-		this.id_actividad = id_actividad;
+		this.id = id;
 		this.horaEntrada = horaEntrada;
 		this.horaSalida = horaSalida;
 		this.fecha = fecha;
 	}
 
 
-	public int getId_actividad() {
-		return id_actividad;
+	public int getId() {
+		return id;
 	}
 
 
-	public void setId_actividad(int id_actividad) {
-		this.id_actividad = id_actividad;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 
