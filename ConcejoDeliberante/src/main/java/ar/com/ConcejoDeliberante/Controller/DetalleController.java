@@ -12,6 +12,7 @@ import ar.com.ConcejoDeliberante.Entity.DetalleActividad;
 import ar.com.ConcejoDeliberante.Service.IActivivdad;
 import ar.com.ConcejoDeliberante.Service.IArchivo;
 import ar.com.ConcejoDeliberante.Service.IDetalle;
+import ar.com.ConcejoDeliberante.Service.IDetalleArchivo;
 
 @Controller
 public class DetalleController {
@@ -23,6 +24,8 @@ public class DetalleController {
 	IActivivdad actividadService;
 	@Autowired
 	IArchivo archivoService;
+	@Autowired
+	IDetalleArchivo detalleArchivoSercive;
 	
 	@GetMapping ("/altaDetalle")
 	public String cargaRol(Model model) {
@@ -45,4 +48,12 @@ public class DetalleController {
 
         return "redirect:/altaDetalle";
     }
+	
+	@GetMapping("/eliminarArchivoDetalle")
+	public String eliminarArchivoDetalle(@RequestParam("id") int id) {
+
+	    detalleArchivoSercive.eliminar(id);
+
+	    return "redirect:/altaDetalle";
+	}
 }

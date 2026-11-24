@@ -28,4 +28,10 @@ public class ImpleDetalleArchivo implements IDetalleArchivo{
 		return detalleArchivoRepo.findAll();
 	}
 
+	@Override
+	public void eliminar(int id) {
+		detalleArchivoRepo.deleteById(id);
+		
+	}
+
 }
