@@ -63,7 +63,6 @@
 										<table class="table">
 											<thead>
 												<tr>
-													<th scope="col">ID</th>
 													<th scope="col">CONCEJAL</th>
 													<th scope="col">NOMBRE</th>
 													<th scope="col">ESTADO</th>
@@ -72,7 +71,6 @@
 											</thead>
 											<tbody class="table-group-divider">
 												<tr th:each="da : ${d.archivos}">
-													<td th:text="${da.id}"></td>
 													<td th:text="${da.archivo.concejal.nombre}"></td>
 													<td th:text="${da.archivo.tipoArchivo.nombre}"></td>
 													<td th:text="${da.archivo.estado}"></td>
