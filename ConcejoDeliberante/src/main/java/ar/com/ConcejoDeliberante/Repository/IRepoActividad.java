@@ -10,7 +10,7 @@ import java.util.List;
 
 
 @Repository
-public interface RepoActividad extends JpaRepository<Actividad, Integer>{
+public interface IRepoActividad extends JpaRepository<Actividad, Integer>{
 	
 	Actividad findById(int id);;
 }

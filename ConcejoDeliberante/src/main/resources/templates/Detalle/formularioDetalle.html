@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{inicio/inicio :: head}">
+</head>
+
+<body>
+
+	<div class="container" th:replace="~{inicio/inicio :: inicio}">
+	</div>
+
+	<div class="container mt-5">
+		<form th:action="@{/guardarDetalle}" th:object="${detalle}" method="post">
+			<div class="input-group container mt-4">
+				<span class="input-group-text">ACTIVIDADES</span>
+				<select class="form-select" th:field="*{actividad}" required>
+					<option value="">SELECCIONA UNA ACTIVIDAD</option>
+					<option th:each="a : ${actividades}" th:value="${a.id}"
+						th:text="${a.fecha + ' / ' + a.horaEntrada + ' / ' + a.horaSalida}">
+					</option>
+				</select>
+			</div>
+			<div class="input-group container mt-4">
+				<span class="input-group-text">ARCHIVOS</span>
+				<select class="form-select" name="idArchivo" required>
+					<option alue="">SELECCIONA UN ARCHIVO</option>
+					<option th:each="b : ${archivos}" th:value="${b.idArchivo}"
+						th:text="${b.concejal.nombre + ' - ' + b.tipoArchivo.nombre + ' - ' + b.nombre}">
+					</option>
+				</select>
+			</div>
+			<div class="container d-grid gap-2 mt-3">
+
+				<button class="btn btn-outline-success" type="submit">
+					GUARDAR
+				</button>
+
+			</div>
+		</form>
+		<div class="container pt-5">
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">FECHA</th>
+						<th scope="col">ARCHIVOS</th>
+					</tr>
+				</thead>
+				<tbody class="table-group-divider">
+					<tr th:each="d : ${detalles}">
+						<th scope="row" th:text="${d.id}"></th>
+						<td th:text="${d.actividad.fecha}"></td>
+						<td>
+							<div class="accordion-item">
+								<h2 class="accordion-header">
+									<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+										th:data-bs-target="'#collapse' + ${d.id}" aria-expanded="false">
+										DETALLE DE ACTIVIDAD
+									</button>
+								</h2>
+								<div th:id="'collapse' + ${d.id}" class="accordion-collapse collapse">
+									<div class="accordion-body">
+										<table class="table">
+											<thead>
+												<tr>
+													<th scope="col">CONCEJAL</th>
+													<th scope="col">NOMBRE</th>
+													<th scope="col">ESTADO</th>
+												</tr>
+											</thead>
+											<tbody class="table-group-divider">
+												<tr th:each="da : ${d.archivos}">
+													<td th:text="${da.archivo.concejal.nombre}"></td>
+													<td th:text="${da.archivo.tipoArchivo.nombre}"></td>
+													<td th:text="${da.archivo.estado}"></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+
+</html>

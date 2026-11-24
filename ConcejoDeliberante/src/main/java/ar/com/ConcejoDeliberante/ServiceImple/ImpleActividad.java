@@ -7,14 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.com.ConcejoDeliberante.Entity.Actividad;
-import ar.com.ConcejoDeliberante.Repository.RepoActividad;
+import ar.com.ConcejoDeliberante.Repository.IRepoActividad;
 import ar.com.ConcejoDeliberante.Service.IActivivdad;
 
 @Service
 public class ImpleActividad implements IActivivdad {
 
 	@Autowired
-	private RepoActividad ActividadRepo;
+	private IRepoActividad ActividadRepo;
 
 	@Override
 	public void guardarAct(Actividad Act) {

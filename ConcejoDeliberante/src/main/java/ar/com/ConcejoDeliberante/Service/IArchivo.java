@@ -8,6 +8,6 @@ import java.util.List;
 public interface IArchivo {
 void guardar (Archivo archivo);
 List <Archivo> listar();
-
+Archivo buscarPorId(int idArchivo);
 }
 

@@ -1,5 +1,6 @@
 package ar.com.ConcejoDeliberante.Entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -30,7 +31,7 @@ public class Archivo {
 	Concejal concejal;
 
 	@OneToMany(mappedBy = "archivo")
-    private List<DetalleActividad> detallesActividad;
+    List<DetalleArchivo> detalles = new ArrayList<>();
 	
 	String nombre;
 	String archivoFisico;
@@ -45,21 +46,20 @@ public class Archivo {
 
 
 	public Archivo(int idArchivo, TipoArchivo tipoArchivo, Comision comision, Concejal concejal,
-			List<DetalleActividad> detallesActividad, String nombre, String archivoFisico, String estado, String hora,
+			List<DetalleArchivo> detalles, String nombre, String archivoFisico, String estado, String hora,
 			String fecha) {
 		super();
 		this.idArchivo = idArchivo;
 		this.tipoArchivo = tipoArchivo;
 		this.comision = comision;
 		this.concejal = concejal;
-		this.detallesActividad = detallesActividad;
+		this.detalles = detalles;
 		this.nombre = nombre;
 		this.archivoFisico = archivoFisico;
 		this.estado = estado;
 		this.hora = hora;
 		this.fecha = fecha;
 	}
-
 
 
 	public String getFecha() {
@@ -131,19 +131,6 @@ public class Archivo {
 	}
 
 
-
-	public List<DetalleActividad> getDetallesActividad() {
-		return detallesActividad;
-	}
-
-
-
-	public void setDetallesActividad(List<DetalleActividad> detallesActividad) {
-		this.detallesActividad = detallesActividad;
-	}
-
-
-
 	public String getNombre() {
 		return nombre;
 	}
@@ -176,6 +163,16 @@ public class Archivo {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+
+
+	public List<DetalleArchivo> getDetalles() {
+		return detalles;
+	}
+
+
+	public void setDetalles(List<DetalleArchivo> detalles) {
+		this.detalles = detalles;
 	}
 
 

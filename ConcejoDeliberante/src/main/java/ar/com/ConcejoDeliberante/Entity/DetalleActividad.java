@@ -6,6 +6,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import ar.com.ConcejoDeliberante.Entity.Actividad;
 
 import jakarta.persistence.OneToMany;
@@ -20,16 +24,20 @@ public class DetalleActividad {
 	@JoinColumn(name ="id_actividad")
 	Actividad actividad;
 	
-	@ManyToOne
-	@JoinColumn(name="id_archivo")
+	@OneToMany(mappedBy = "detalle")
+    List<DetalleArchivo> archivos = new ArrayList<>();
 
-	Archivo archivo;
-	
-	public DetalleActividad(int id, Actividad actividad, Archivo archivo) {
+	public DetalleActividad() {
+		
+	}
+
+
+	public DetalleActividad(int id, Actividad actividad, List<DetalleArchivo> archivos) {
 		this.id = id;
 		this.actividad = actividad;
-		this.archivo = archivo;
+		this.archivos = archivos;
 	}
+
 
 	public int getId() {
 		return id;
@@ -45,16 +53,19 @@ public class DetalleActividad {
 
 	public void setActividad(Actividad actividad) {
 		this.actividad = actividad;
+
 	}
 
-	public Archivo getArchivo() {
-		return archivo;
+
+	public List<DetalleArchivo> getArchivos() {
+		return archivos;
 	}
 
-	public void setArchivo(Archivo archivo) {
-		this.archivo = archivo;
+
+	public void setArchivos(List<DetalleArchivo> archivos) {
+		this.archivos = archivos;
 	}
 	
-
+	
 
 }

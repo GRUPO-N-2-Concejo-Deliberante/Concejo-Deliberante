@@ -11,16 +11,18 @@
 	</div>
 
 
-	<form th:action="@{/guardar}" th:object="${Rol}" method="post">
-		<div class="input-group container mt-4">
-			<span class="input-group-text">Cargo</span>
-			<input type="text" th:field="*{cargo}" aria-label="First name" class="form-control" required>
+	<div class="container mt-5">
+		<form th:action="@{/guardar}" th:object="${Rol}" method="post">
+			<div class="input-group container mt-4">
+				<span class="input-group-text">Cargo</span>
+				<input type="text" th:field="*{cargo}" aria-label="First name" class="form-control" required>
 
-		</div>
-		<div class="container mt-3">
-			<button type="submit" class="btn-outline theme-success">GUARDAR</button>
-		</div>
-	</form>
+			</div>
+			<div class=" container  d-grid gap-2 mt-3">
+				<button class="btn btn-outline-success" type="submit">GUARDAR</button>
+			</div>
+		</form>
+	</div>
 	<div class="container mt-5">
 		<table class="table">
 			<thead>

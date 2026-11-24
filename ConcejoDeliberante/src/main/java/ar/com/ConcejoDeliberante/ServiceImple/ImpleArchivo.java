@@ -34,5 +34,11 @@ public class ImpleArchivo implements IArchivo{
 		return archivoRepo.findAll();
 	}
 
+	@Override
+	public Archivo buscarPorId(int idArchivo) {
+		
+		return archivoRepo.findByIdArchivo(idArchivo);
+	}
+
 	
 }

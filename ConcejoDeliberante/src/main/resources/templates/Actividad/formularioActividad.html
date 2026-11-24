@@ -10,7 +10,7 @@
 	<div class="container" th:replace="~{inicio/inicio :: inicio}">
 	</div>
 
-	<div>
+	<div class="pt-5">
 		<form th:action="@{/GuardarActividad}" th:object="${actividad}" method="post">
 			<input type="hidden" th:field="*{id}">
 			<div class="input-group container mt-4">
@@ -28,8 +28,8 @@
 				<input type="time" th:field="*{horaSalida}" aria-label="First name" class="form-control" required>
 
 			</div>
-			<div class="container mt-3">
-				<button type="submit" class="btn-outline theme-success">GUARDAR</button>
+			<div class=" container  d-grid gap-2 mt-3" >
+			  <button class="btn btn-outline-success" type="submit">GUARDAR</button>
 			</div>
 		</form>
 	</div>

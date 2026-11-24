@@ -26,6 +26,6 @@ public class RolController {
 	@PostMapping ("/guardar")
 	public String guardar(Rol rol) {
 	rolServer.guardar(rol);
-	return "redirect:/"; 
+	return "redirect:/altaRol"; 
 	}
 }

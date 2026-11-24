@@ -44,9 +44,8 @@
 		<div th:if="${mensajeError}" class="alert alert-danger m-3">
 			<p th:text="${mensajeError}"></p>
 		</div>
-		<div class="container mt-3">
-
-			<button type="submit" class="btn-outline theme-success">GUARDAR</button>
+		<div class=" container  d-grid gap-2 mt-3">
+			<button class="btn btn-outline-success" type="submit">GUARDAR</button>
 		</div>
 
 	</form>
@@ -80,8 +79,7 @@
 
 
 					<td>
-						<a th:href="@{/concejal/bajaConcejal(id=${d.id})}" class="btn btn-warning btn-sm"><i
-								class="bi bi-check-circle"></i> / <i class="bi bi-dash-circle"></i></a>
+						<a th:href="@{/concejal/bajaConcejal(id=${d.id})}" class="btn btn-warning btn-sm"><i class="bi bi-check-circle"></i> / <i class="bi bi-dash-circle"></i></a>
 						<a th:href="@{/modificar(id=${d.id})}" class="btn btn-danger">modificar</a>
 					</td>
 				</tr>
