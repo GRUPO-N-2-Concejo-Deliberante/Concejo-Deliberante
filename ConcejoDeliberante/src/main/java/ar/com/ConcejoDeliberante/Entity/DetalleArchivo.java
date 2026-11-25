@@ -23,11 +23,9 @@ public class DetalleArchivo {
     Archivo archivo;
 
 	public DetalleArchivo() {
-		super();
 	}
 
 	public DetalleArchivo(int id, DetalleActividad detalle, Archivo archivo) {
-		super();
 		this.id = id;
 		this.detalle = detalle;
 		this.archivo = archivo;

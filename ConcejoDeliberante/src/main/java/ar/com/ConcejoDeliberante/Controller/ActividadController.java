@@ -45,7 +45,7 @@ public class ActividadController {
 	
 	@GetMapping ("/modificarActividad")
 	public String mostrarEdicion(@RequestParam ("id")  int id, Model model) {
-		Actividad act = ActividadService.porID(id);
+		Actividad act = ActividadService.porID (id);
 		model.addAttribute("actividad", act);
 		model.addAttribute("actividades", ActividadService.listarActividadad());
 		return "Actividad/formularioActividad";

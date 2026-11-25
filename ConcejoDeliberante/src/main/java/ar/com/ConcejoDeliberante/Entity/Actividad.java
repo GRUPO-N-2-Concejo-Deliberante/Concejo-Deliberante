@@ -31,18 +31,11 @@ public class Actividad {
 	@OneToMany(mappedBy = "actividad")
     private List<DetalleActividad> detallesActividad;
 	
-	
-	
-	
 	public Actividad() {
 	}
 
-
-
-
 	public Actividad(int id, LocalTime horaEntrada, LocalTime horaSalida, Date fecha, String estado,
 			List<Asistencia> asistencias, List<DetalleActividad> detallesActividad) {
-		super();
 		this.id = id;
 		this.horaEntrada = horaEntrada;
 		this.horaSalida = horaSalida;
