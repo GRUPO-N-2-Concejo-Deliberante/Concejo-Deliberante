@@ -13,5 +13,6 @@ public interface IConcejalRepo extends JpaRepository<Concejal, Integer> {
 
 Concejal findByDNI (String DNI);
 Concejal findByid(int  id);
+Concejal findByNombreUsuario(String nombreUsuario);
 
 }

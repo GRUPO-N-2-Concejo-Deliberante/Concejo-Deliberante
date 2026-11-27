@@ -10,53 +10,49 @@ import jakarta.persistence.OneToMany;
 
 @Entity
 public class Rol {
-	
+
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
-	
+
 	@OneToMany(mappedBy = "tipoRol")
-    private List<Usuario> usuarios;
-	
-	
+	private List<Usuario> usuarios;
+
 	String cargo;
 
- public Rol() {
+	public Rol() {
 		super();
 	}
 
- public Rol(int id, String cargo, List<Usuario> usuarios) {
+	public Rol(int id, String cargo, List<Usuario> usuarios) {
 		super();
 		this.id = id;
 		this.cargo = cargo;
 		this.usuarios = usuarios;
 	}
 
- public int getId() {
-	return id;
- }
+	public int getId() {
+		return id;
+	}
 
- public void setId(int id) {
-	this.id = id;
- }
+	public void setId(int id) {
+		this.id = id;
+	}
 
- public String getCargo() {
-	return cargo;
- }
+	public String getCargo() {
+		return cargo;
+	}
 
- public void setCargo(String cargo) {
-	this.cargo = cargo;
- }
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
+	}
 
- public List<Usuario> getUsuarios() {
-	return usuarios;
- }
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
 
- public void setUsuarios(List<Usuario> usuarios) {
-	this.usuarios = usuarios;
- }
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
 
- 
- 
- 
 }

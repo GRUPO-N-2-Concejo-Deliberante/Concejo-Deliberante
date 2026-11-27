@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{inicio/inicio :: head}">
+
+</head>
+
+<body style="background-image:url(/img/fondoLogin.png); background-size: contain;">
+	
+	<div class="container mt-5 pt-2 mb-4 shadow" style="background-color: white;  ">
+
+		<h2 class="text-center">INICIO DE SESIÓN</h2>
+
+		<form th:action="@{/login}" method="post" class="mt-4" style="margin-right: 10%; margin-left: 10%;">
+
+			<div class="mb-3">
+				<label for="username" class="form-label">Nombre de usuario</label>
+				<input type="text" id="username" name="username" class="form-control" required autocomplete="username">
+			</div>
+
+			<div class="mb-3">
+				<label for="password" class="form-label">Contraseña</label>
+				<input type="password" id="password" name="password" class="form-control" required
+					autocomplete="current-password">
+			</div>
+
+			<div th:if="${param.error}" class="alert alert-danger">
+				Usuario o contraseña incorrectos.
+			</div>
+
+			<div th:if="${param.logout}" class="alert alert-success">
+				Cerraste sesión correctamente.
+			</div>
+
+			<div class="d-grid pb-4">
+				<button type="submit" class="btn btn-primary">
+					INGRESAR
+				</button>
+			</div>
+
+		</form>
+
+	</div>
+</body>
+
+</html>

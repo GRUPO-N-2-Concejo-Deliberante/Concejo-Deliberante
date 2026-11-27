@@ -25,14 +25,13 @@ public class Concejal extends Usuario{
 		
 	}
 
-
-
 	public Concejal(int id, String nombre, String apellido, String DNI, String correo, String telefono, boolean estado,
-			Rol tipoRol) {
-		super(id, nombre, apellido, DNI, correo, telefono, estado, tipoRol);
-		// TODO Auto-generated constructor stub
-
+			String nombreUsuario, String password, Rol tipoRol, List<Archivo> archivos, List<Asistencia> asistencias) {
+		super(id, nombre, apellido, DNI, correo, telefono, estado, nombreUsuario, password, tipoRol);
+		this.archivos = archivos;
+		this.asistencias = asistencias;
 	}
+
 
 
 

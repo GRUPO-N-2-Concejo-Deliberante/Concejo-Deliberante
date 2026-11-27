@@ -16,8 +16,7 @@ import ar.com.ConcejoDeliberante.Service.IDetalleArchivo;
 
 @Controller
 public class DetalleController {
-	
-	
+
 	@Autowired
 	IDetalle detalleService;
 	@Autowired
@@ -26,8 +25,8 @@ public class DetalleController {
 	IArchivo archivoService;
 	@Autowired
 	IDetalleArchivo detalleArchivoSercive;
-	
-	@GetMapping ("/altaDetalle")
+
+	@GetMapping("/altaDetalle")
 	public String cargaRol(Model model) {
 		DetalleActividad detalle = new DetalleActividad();
 		model.addAttribute("detalle", detalle);
@@ -35,25 +34,24 @@ public class DetalleController {
 		model.addAttribute("actividades", actividadService.listarActividadad());
 		model.addAttribute("archivos", archivoService.listar());
 		return "Detalle/formularioDetalle";
-	
+
 	}
+
 	@PostMapping("/guardarDetalle")
-    public String guardar(
-            DetalleActividad detalle,
-            @RequestParam("idArchivo") int idArchivo) {
+	public String guardar(DetalleActividad detalle, @RequestParam("idArchivo") int idArchivo) {
 
-        Archivo archivo = archivoService.buscarPorId(idArchivo);
+		Archivo archivo = archivoService.buscarPorId(idArchivo);
 
-        detalleService.generarDetalle(detalle, archivo);
+		detalleService.generarDetalle(detalle, archivo);
 
-        return "redirect:/altaDetalle";
-    }
-	
+		return "redirect:/altaDetalle";
+	}
+
 	@GetMapping("/eliminarArchivoDetalle")
 	public String eliminarArchivoDetalle(@RequestParam("id") int id) {
 
-	    detalleArchivoSercive.eliminar(id);
+		detalleArchivoSercive.eliminar(id);
 
-	    return "redirect:/altaDetalle";
+		return "redirect:/altaDetalle";
 	}
 }

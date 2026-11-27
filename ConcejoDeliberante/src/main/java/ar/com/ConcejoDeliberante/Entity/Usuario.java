@@ -22,6 +22,8 @@ public class Usuario {
 	private String correo;
 	private String telefono;
 	private boolean estado;
+	private String nombreUsuario;
+	private String password;
 	
 	@ManyToOne
 	@JoinColumn(name="id_rol")
@@ -33,11 +35,9 @@ public class Usuario {
 	}
 
 
-	
 
-
-	public Usuario(int id, String nombre, String apellido, String DNI, String correo, String telefono,
-			boolean estado, Rol tipoRol) {
+	public Usuario(int id, String nombre, String apellido, String DNI, String correo, String telefono, boolean estado,
+			String nombreUsuario, String password, Rol tipoRol) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -46,10 +46,10 @@ public class Usuario {
 		this.correo = correo;
 		this.telefono = telefono;
 		this.estado = estado;
+		this.nombreUsuario = nombreUsuario;
+		this.password = password;
 		this.tipoRol = tipoRol;
 	}
-
-
 
 
 
@@ -58,19 +58,11 @@ public class Usuario {
 	}
 
 
+
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
-	public String getDNI() {
-		return DNI;
-	}
-
-
-	public void setDNI(String DNI) {
-		this.DNI = DNI;
-	}
 
 
 	public String getNombre() {
@@ -78,9 +70,11 @@ public class Usuario {
 	}
 
 
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 
 
 	public String getApellido() {
@@ -88,9 +82,23 @@ public class Usuario {
 	}
 
 
+
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
+
+
+
+	public String getDNI() {
+		return DNI;
+	}
+
+
+
+	public void setDNI(String dNI) {
+		DNI = dNI;
+	}
+
 
 
 	public String getCorreo() {
@@ -98,9 +106,11 @@ public class Usuario {
 	}
 
 
+
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
+
 
 
 	public String getTelefono() {
@@ -108,10 +118,11 @@ public class Usuario {
 	}
 
 
+
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	
+
 
 
 	public boolean isEstado() {
@@ -119,9 +130,35 @@ public class Usuario {
 	}
 
 
+
 	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
+
+
+
+	public String getNombreUsuario() {
+		return nombreUsuario;
+	}
+
+
+
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
+	}
+
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 
 
 	public Rol getTipoRol() {
@@ -129,11 +166,12 @@ public class Usuario {
 	}
 
 
+
 	public void setTipoRol(Rol tipoRol) {
 		this.tipoRol = tipoRol;
 	}
-	
-	
+
+
 	
 	
 }

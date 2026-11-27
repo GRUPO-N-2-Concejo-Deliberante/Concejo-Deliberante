@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import ar.com.ConcejoDeliberante.Entity.Concejal;
@@ -16,30 +17,37 @@ public class ImpleConcejal implements IConcejal {
 
 	@Autowired
 	IConcejalRepo conceRepo;
+	
+	@Autowired
+	PasswordEncoder passwordEncoder;
 
 	@Override
-	public void guarda(Concejal concejal) {
+    public void guarda(Concejal concejal) {
 
-		Concejal concejalExistente = conceRepo.findByid(concejal.getId());
+        Concejal concejalExistente = conceRepo.findByid(concejal.getId());
 
-	    if (concejalExistente != null) {
-	        
-	        concejalExistente.setNombre(concejal.getNombre());
-	        concejalExistente.setApellido(concejal.getApellido());
-	        concejalExistente.setDNI(concejal.getDNI());
-	        concejalExistente.setCorreo(concejal.getCorreo());
-	        concejalExistente.setTelefono(concejal.getTelefono());
-	        concejalExistente.setTipoRol(concejal.getTipoRol());
-	        
-	        conceRepo.save(concejalExistente);
-	       
-	    } else {
-	        
-	        concejal.setEstado(true);
-	        conceRepo.save(concejal);
-	        System.out.println("Se guardó el nuevo concejal correctamente.");
-	    }
-	}
+        if (concejalExistente != null) {
+
+            concejalExistente.setNombre(concejal.getNombre());
+            concejalExistente.setApellido(concejal.getApellido());
+            concejalExistente.setDNI(concejal.getDNI());
+            concejalExistente.setCorreo(concejal.getCorreo());
+            concejalExistente.setTelefono(concejal.getTelefono());
+            concejalExistente.setTipoRol(concejal.getTipoRol());
+            concejalExistente.setNombreUsuario(concejal.getNombreUsuario());
+
+           
+            if (concejal.getPassword() != null && !concejal.getPassword().isBlank()) {
+                concejalExistente.setPassword(passwordEncoder.encode(concejal.getPassword()));
+            }
+            conceRepo.save(concejalExistente);
+        } else {
+            concejal.setEstado(true);
+            concejal.setPassword(passwordEncoder.encode(concejal.getPassword()));
+            conceRepo.save(concejal);
+            System.out.println("Se guardó el nuevo concejal correctamente.");
+        }
+    }
 	
 
 	@Override
