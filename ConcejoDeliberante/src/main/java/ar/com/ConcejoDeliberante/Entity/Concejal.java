@@ -1,6 +1,7 @@
 package ar.com.ConcejoDeliberante.Entity;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -15,8 +16,8 @@ public class Concejal extends Usuario{
 	@OneToMany(mappedBy = "concejal")
 	private List<Archivo> archivos;
 	
-	@OneToMany(mappedBy = "concejal")
-    private List<Asistencia> asistencias;
+	  @OneToMany(mappedBy = "concejal")
+	    List<DetalleAsistencia> asistencia = new ArrayList<>();
 	
 
 	
@@ -26,12 +27,10 @@ public class Concejal extends Usuario{
 	}
 
 
-
-	public Concejal(int id, String nombre, String apellido, String DNI, String correo, String telefono, boolean estado,
-			Rol tipoRol) {
-		super(id, nombre, apellido, DNI, correo, telefono, estado, tipoRol);
-		// TODO Auto-generated constructor stub
-
+	public Concejal(List<Archivo> archivos, List<DetalleAsistencia> asistencia) {
+		super();
+		this.archivos = archivos;
+		this.asistencia = asistencia;
 	}
 
 
@@ -45,15 +44,17 @@ public class Concejal extends Usuario{
 	}
 
 
-	public List<Asistencia> getAsistencias() {
-		return asistencias;
+	public List<DetalleAsistencia> getAsistencia() {
+		return asistencia;
 	}
 
 
-	public void setAsistencias(List<Asistencia> asistencias) {
-		this.asistencias = asistencias;
+	public void setAsistencia(List<DetalleAsistencia> asistencia) {
+		this.asistencia = asistencia;
 	}
 
+
+	
 
 
 	

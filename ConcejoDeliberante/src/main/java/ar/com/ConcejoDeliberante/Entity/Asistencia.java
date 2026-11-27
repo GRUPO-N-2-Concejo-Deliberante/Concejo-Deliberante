@@ -1,5 +1,8 @@
 package ar.com.ConcejoDeliberante.Entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,26 +19,24 @@ public class Asistencia {
 	int id_asistencia;
 	
 	@ManyToOne
-	@JoinColumn(name="id_concejal")
-	Concejal concejal;
-	
-	@ManyToOne
 	@JoinColumn(name="id_actividad")
 	Actividad actividad;
 	
-	private boolean estado;
-	
-	
+    @OneToMany(mappedBy = "asistencia")
+    List<DetalleAsistencia> asistencia = new ArrayList<>();
+    
+    
 	public Asistencia() {
-		super();
+	
 	}
 
-	public Asistencia(int id_asistencia, Concejal concejal, Actividad actividad, boolean estado) {
+
+	public Asistencia(int id_asistencia, Actividad actividad, List<DetalleAsistencia> asistencia) {
 		super();
 		this.id_asistencia = id_asistencia;
-		this.concejal = concejal;
 		this.actividad = actividad;
-		this.estado = estado;
+		this.asistencia = asistencia;
+		
 	}
 
 
@@ -44,11 +45,9 @@ public class Asistencia {
 	}
 
 
-
 	public void setId_asistencia(int id_asistencia) {
 		this.id_asistencia = id_asistencia;
 	}
-
 
 
 	public Actividad getActividad() {
@@ -56,32 +55,18 @@ public class Asistencia {
 	}
 
 
-
 	public void setActividad(Actividad actividad) {
 		this.actividad = actividad;
 	}
 
 
-
-	public Concejal getConcejal() {
-		return concejal;
+	public List<DetalleAsistencia> getAsistencia() {
+		return asistencia;
 	}
 
 
-
-	public void setConcejal(Concejal concejal) {
-		this.concejal = concejal;
+	public void setAsistencia(List<DetalleAsistencia> asistencia) {
+		this.asistencia = asistencia;
 	}
 
-	public boolean isEstado() {
-		return estado;
-	}
-
-	public void setEstado(boolean estado) {
-		this.estado = estado;
-	}
-	
-	
-	
-	
 }

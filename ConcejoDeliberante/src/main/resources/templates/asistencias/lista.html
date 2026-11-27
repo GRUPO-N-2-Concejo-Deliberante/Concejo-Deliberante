@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{inicio/inicio :: head}">
+</head>
+
+<body>
+
+	<div class="container" th:replace="~{inicio/inicio :: inicio}">
+	</div>
+
+	<div class="container mt-5">
+
+		<!-- Formulario de Carga -->
+		<form th:action="@{/asistencias/guardar}" th:object="${detalleAsistencia}" method="post">
+			
+			<!-- Selector de Concejal -->
+			<div class="input-group container mt-4">
+				<span class="input-group-text">CONCEJAL</span>
+				<select class="form-select" name="idConcejal" required>
+					<option value="">SELECCIONA UN CONCEJAL</option>
+					<option th:each="c : ${Concejales}" 
+							th:value="${c.id}"
+							th:text="${c.nombre}">
+					</option>
+				</select>
+			</div>
+
+			<!-- Selector de Actividades -->
+			<div class="input-group container mt-4">
+				<span class="input-group-text">ACTIVIDADES</span>
+				<select class="form-select" name="id_actividad" required>
+					<option value="">SELECCIONA UNA ACTIVIDAD</option>
+					<option th:each="a : ${actividades}" th:value="${a.id}"
+						th:text="${a.fecha + ' / ' + a.horaEntrada + ' / ' + a.horaSalida}">
+					</option>
+				</select>
+			</div>
+
+			<!-- Checkbox de Estado -->
+			<div class="container mt-3">
+				<div class="form-check">
+					<input class="form-check-input" type="checkbox" id="checkDefault" th:field="*{estado}">
+					<label class="form-check-label" for="checkDefault">
+						PRESENTE
+					</label>
+				</div>
+			</div>
+
+			<!-- Botón Guardar -->
+			<div class="container d-grid gap-2 mt-3">
+				<button class="btn btn-outline-success" type="submit">
+					GUARDAR
+				</button>
+			</div>
+		</form>
+
+		<!-- Tabla de Asistencias con Acordeón de Detalles por Fila -->
+		<div class="container pt-5">
+			<table class="table align-middle">
+				<thead>
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">CONCEJAL</th>
+						<th scope="col">ESTADO</th>
+						<th scope="col">DETALLES DE ACTIVIDAD</th>
+						<th scope="col">OPCIONES</th>
+					</tr>
+				</thead>
+				<tbody class="table-group-divider">
+					<tr th:each="a : ${asistencias}">
+						<th scope="row" th:text="${a.id}"></th>
+						<td th:text="${a.concejal?.nombre}"></td>
+						<td th:text="${a.estado ? 'Presente' : 'Ausente'}"></td>
+						
+						<!-- Columna con Acordeón único por cada registro -->
+						<td>
+							<div class="accordion accordion-flush" th:id="'accordion-' + ${a.id}">
+								<div class="accordion-item">
+									<h2 class="accordion-header" th:id="'heading-' + ${a.id}">
+										<button class="accordion-button collapsed py-1 px-2" type="button" 
+												data-bs-toggle="collapse" 
+												th:data-bs-target="'#collapse-' + ${a.id}" 
+												aria-expanded="false" 
+												th:aria-controls="'collapse-' + ${a.id}">
+											Ver Actividad
+										</button>
+									</h2>
+									<div th:id="'collapse-' + ${a.id}" class="accordion-collapse collapse" 
+										 th:aria-labelledby="'heading-' + ${a.id}" 
+										 th:data-bs-parent="'#accordion-' + ${a.id}">
+										<div class="accordion-body p-2 small">
+											<p class="mb-1"><strong>Fecha:</strong> <span th:text="${a.actividad?.fecha}"></span></p>
+											<p class="mb-1"><strong>Entrada:</strong> <span th:text="${a.actividad?.horaEntrada}"></span></p>
+											<p class="mb-0"><strong>Salida:</strong> <span th:text="${a.actividad?.horaSalida}"></span></p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</td>
+
+						<td>
+							<a th:href="@{/asistencias/eliminar(id=${a.id})}"
+								class="btn btn-danger btn-sm">
+								Eliminar
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</body>
+</html>
